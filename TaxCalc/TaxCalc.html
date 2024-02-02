@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+        label{
+            width: 200px;
+            display: inline-block;
+        }
+    </style>
+    <link rel="stylesheet" href="./TaxCalc.css">
+</head>
+<body>
+    <div class="container">
+        <h1>TaxCalculator</h1>
+        <hr>
+
+        <label for="name">Enter Name: </label>
+        <input type="text" id="name"><br><br>
+        <label for="salary">Enter salary: </label>
+        <input type="text" id="salary"><br><br>
+        <button onclick=taxCalc();>Calculate</button>
+        <br><br>
+        <label for="ded1">Deduction-1</label>
+        <input type="text" id="ded1">
+        <br><br>
+        <label for="ded2">Deduction-2</label>
+        <input type="text" id="ded2">
+        <br><br>
+        <label for="totalded">Total Deduction</label>
+        <input type="text" id="total">
+        <br><br>
+        <label for="resukt">Result:</label>
+        <input type="text" id="result">
+
+    </div>
+    <script>
+        function taxCalc(name,salary){
+            name = document.getElementById("name").value;
+            salary = document.getElementById("salary").value;
+
+            if(salary <= 300000){
+                document.getElementById("ded1").value = "0";
+                document.getElementById("ded2").value = "0";
+                document.getElementById("total").value = "0";
+                document.getElementById("result").value = `${name} Tax Free`;
+            }
+            else if(salary <= 600000){
+                ded1 = 0;
+                ded2 = (salary-300000)*2;
+                totalded = ded1+ded2;
+                document.getElementById("ded1").value = ded1;
+                document.getElementById("ded2").value = ded2;
+                document.getElementById("total").value = totalded;
+                document.getElementById("result").value = `${name} Tax amount is: ${totalded}`;
+            }
+            else if(salary > 600000){
+                ded1 = 30000;
+                ded2 = (salary-600000)*2;
+                totalded = ded1+ded2;
+                document.getElementById("ded1").value = ded1;
+                document.getElementById("ded2").value = ded2;
+                document.getElementById("total").value = totalded;
+                document.getElementById("result").value = `${name} Tax amount is: ${totalded}`; 
+            }
+        }
+    </script>
+</body>
+</html>
